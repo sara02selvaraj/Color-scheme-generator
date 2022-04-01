@@ -2,13 +2,14 @@
 <html>
     <head>
         <title>Color picker</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
         <link href="styles/index.css" rel="stylesheet">
     </head>
     <body>
         <main>
             <div class="form-content">
                 <form id="form-El">
-                    <input type="color" value="#F55A5A">
+                    <input type="color" id="color" value="#F55A5A">
                     <select name="mode" id="mode">
                         <option value="monochrome">Monochrome</option>
                         <option value="monochrome-dark">Monochrome-dark</option>
@@ -19,12 +20,12 @@
                         <option value="triad">Triad</option>
                         <option value="quad">Quad</option>
                     </select>
-                    <button type="button">Get color scheme</button>
+                    <button type="submit">Get color scheme</button>
                 </form>
             </div>
-            <div class="container">
-
+            <div id="container">
             </div>
         </main>
+        <script src="index.js"></script>
     </body>
 </html>
