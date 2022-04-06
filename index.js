@@ -18,10 +18,11 @@ function render() {
             return `<div class="color-container">
                         <div class="bg-color" style="background:${color.hex.value}"></div>
                         <p class="color-name">
-                        <span class="tooltiptext" id="myTooltip">Copy</span>${color.hex.value}</p>
+                        <span class="tooltiptext" id="myTooltip">Copy</span>
+                        <span class="name-El">${color.hex.value}</span></p>
                     </div>`
         }).join('')
-        test()
+        copyToClipboard()
     })
 }    
 
@@ -31,21 +32,17 @@ formEl.addEventListener('submit', function(e) {
     render()
 })
 
-function test() {
-    const colorNameEl = document.getElementsByClassName('color-name')
-    for(let i=0; i < colorNameEl.length; i++){
-        colorNameEl[i].addEventListener('click', function(){
-            navigator.clipboard.writeText(colorNameEl[i].textContent)
-            console.log(colorNameEl[i].textContent)
-            alert(colorNameEl[i].textContent)
+//copy the color when clicked with tooltip 
+function copyToClipboard() {
+    const nameEl = document.getElementsByClassName('name-El')
+    const tooltipEl = document.getElementsByClassName('tooltiptext')
+    for(let i=0; i < nameEl.length; i++){
+        nameEl[i].addEventListener('click', function(){
+            navigator.clipboard.writeText(nameEl[i].textContent)
+            tooltipEl[i].textContent = `copied`
+        })
+        nameEl[i].addEventListener('mouseout', function(){
+            tooltipEl[i].textContent = 'copy'
         })
     }
 }
-
-// function copyText(item) {
-//     item.select();
-//     item.setSelectionRange(0, 99999);
-//     navigator.clipboard.writeText(item.textContent)
-//     console.log(item.textContent)
-//     alert(item.textContent)
-// }
