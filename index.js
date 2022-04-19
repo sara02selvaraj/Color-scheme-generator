@@ -19,10 +19,9 @@ function render() {
                         <div class="bg-color" style="background:${color.hex.value}"></div>
                         <p class="color-name">
                         <span class="tooltiptext" id="myTooltip">Copy</span>
-                        <span class="name-El">${color.hex.value}</span></p>
+                        <span onclick="handleCopy('${color.hex.value}')" class="name-El">${color.hex.value}</span></p>
                     </div>`
         }).join('')
-        copyToClipboard()
     })
 }    
 
@@ -32,17 +31,12 @@ formEl.addEventListener('submit', function(e) {
     render()
 })
 
-//copy the color when clicked with tooltip 
-function copyToClipboard() {
-    const nameEl = document.getElementsByClassName('name-El')
+function handleCopy(color){
+    navigator.clipboard.writeText(color)
     const tooltipEl = document.getElementsByClassName('tooltiptext')
-    for(let i=0; i < nameEl.length; i++){
-        nameEl[i].addEventListener('click', function(){
-            navigator.clipboard.writeText(nameEl[i].textContent)
-            tooltipEl[i].textContent = `copied`
-        })
-        nameEl[i].addEventListener('mouseout', function(){
-            tooltipEl[i].textContent = 'copy'
-        })
+    for(let item of tooltipEl) {
+        item.textContent = `copied`;
     }
+    
 }
+
