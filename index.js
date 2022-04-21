@@ -18,8 +18,8 @@ function render() {
             return `<div class="color-container">
                         <div class="bg-color" style="background:${color.hex.value}"></div>
                         <p class="color-name">
-                        <span class="tooltiptext" id="myTooltip">Copy</span>
-                        <span onclick="handleCopy('${color.hex.value}')" class="name-El">${color.hex.value}</span></p>
+                        <span class="name-El"
+                        data-toggle="tooltip" data-placement="top" title="copy">${color.hex.value}</span></p>
                     </div>`
         }).join('')
     })
@@ -31,12 +31,15 @@ formEl.addEventListener('submit', function(e) {
     render()
 })
 
-function handleCopy(color){
-    navigator.clipboard.writeText(color)
-    const tooltipEl = document.getElementsByClassName('tooltiptext')
-    for(let item of tooltipEl) {
-        item.textContent = `copied`;
+containerEl.addEventListener('click', function(e) {
+    if(e.target.classList.contains('name-El')){
+        navigator.clipboard.writeText(e.target.textContent)
+        const copyDiv = document.createElement('div')
+        copyDiv.classList.add('copy-div');
+        copyDiv.textContent = 'copied';
+        e.target.append(copyDiv)
+        setTimeout(() => {
+            copyDiv.parentNode.removeChild(copyDiv)
+        }, 1000)
     }
-    
-}
-
+})

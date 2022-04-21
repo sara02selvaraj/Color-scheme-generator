@@ -60,42 +60,14 @@ form > button {
   height: 470px;
 }
 
-.color-name {
-  position: relative;
-}
-
 .color-name:hover {
   cursor: pointer;
 }
 
-.tooltiptext {
-  visibility: hidden;
-  width:70px;
-  font-size:0.95rem;
-  text-align: center;
-  background-color: #555;
-  color: #fff;
-  padding:0.131em;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -15px;
-  border-radius: 5px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-.color-name:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+.copy-div {
+  margin-top: -3rem;
+  background-color: black;
+  color:#fff;
+  border-radius:4px;
+  padding:0.2rem 0.4rem;
 }
